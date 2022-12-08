@@ -1,7 +1,6 @@
 """
 Advent of Code 2022: day 2
 """
-
 split_input = open('input.txt', 'r').read().split('\n')
 
 #---------- Part 1 ----------#
