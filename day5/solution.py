@@ -7,18 +7,18 @@ from collections import deque
 
 # Read in input
 starting_stacks, procedure = open('input.txt').read().split('\n\n')
-steps = procedure.split('\n')
+steps = procedure.splitlines()
 
 
-def parse_starting_stacks(starting_stacks: str) -> list[deque]:
+def parse_starting_stacks(_starting_stacks: str) -> list[deque]:
     """
     Parse the starting stack states.
-    :param starting_stacks: The starting representation.
+    :param _starting_stacks: The starting representation.
     :return: A list of stacks.
     """
-    lines = starting_stacks.split('\n')
-    n_stacks = int(starting_stacks[-1].split(' ')[-1])
-    stacks = [deque() for _ in range(n_stacks)]
+    lines = _starting_stacks.split('\n')
+    n_stacks = int(_starting_stacks[-1].split(' ')[-1])
+    _stacks = [deque() for _ in range(n_stacks)]
 
     # Parse lines possibly containing stacks
     for line in lines[::-1][1:]:
@@ -35,9 +35,9 @@ def parse_starting_stacks(starting_stacks: str) -> list[deque]:
 
             # Crate present
             if stack_char != ' ':
-                stacks[i].append(stack_char)
+                _stacks[i].append(stack_char)
 
-    return stacks
+    return _stacks
 
 
 def parse_step(step: str) -> tuple[int, int, int]:
@@ -48,39 +48,34 @@ def parse_step(step: str) -> tuple[int, int, int]:
     """
     result = re.search(r'move (\d+) from (\d+) to (\d+)', step)
 
-    # Validate step format
-    if not result or len(result.groups()) != 3:
-        raise ValueError(f'Invalid step format: {step}')
-
     # Convert instructions to int
     x, y, z = result.groups()
     return int(x), int(y), int(z)
 
 
-def perform_steps_one_by_one(stacks: list[deque], n: int, from_stack: int, to_stack: int) -> None:
+def perform_steps_one_by_one(_stacks: list[deque], n: int, from_stack: int, to_stack: int) -> None:
     """
     Perform a single step of the procedure, while moving crates one by one.
-    :param stacks: The current stack states.
+    :param _stacks: The current stack states.
     :param n: The number of crates to move.
     :param from_stack: The stack to move crates from.
     :param to_stack: The stack to move crates to.
     :return: The new stack states.
     """
-    for i in range(n):
-        stacks[to_stack-1].append(stacks[from_stack-1].pop())
+    [_stacks[to_stack-1].append(_stacks[from_stack-1].pop()) for _ in range(n)]
 
 
-def perform_steps(stacks: list[deque], n: int, from_stack: int, to_stack: int) -> None:
+def perform_steps(_stacks: list[deque], n: int, from_stack: int, to_stack: int) -> None:
     """
     Perform a single step of the procedure, while moving multiple crates at once.
-    :param stacks: The current stack states.
+    :param _stacks: The current stack states.
     :param n: The number of crates to move.
     :param from_stack: The stack to move crates from.
     :param to_stack: The stack to move crates to.
     :return: The new stack states.
     """
-    crates_to_move = [stacks[from_stack-1].pop() for _ in range(n)]
-    stacks[to_stack-1].extend(crates_to_move[::-1])
+    crates_to_move = [_stacks[from_stack-1].pop() for _ in range(n)]
+    _stacks[to_stack-1].extend(crates_to_move[::-1])
 
 
 stacks = parse_starting_stacks(starting_stacks)

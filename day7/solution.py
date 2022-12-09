@@ -82,9 +82,6 @@ class Directory:
         """
         target_dict = self._files if isinstance(_object, File) else self._directories
 
-        if target_dict.get(_object.name):
-            raise ValueError(f'Object {_object.name} already exists on parent {self.name}')
-
         # Add the object to the current directory
         target_dict[_object.name] = _object
         self._size += _object.size
@@ -159,11 +156,7 @@ def parse_commands(_commands: deque[str]) -> Directory:
                     # Add directory
                     current_dir.add_object(Directory(dir_name, current_dir))
                     continue
-
-                raise ValueError(f'Invalid "ls" result: {listing}')
             continue
-
-        raise ValueError(f'Invalid command: {command}')
     return root_dir
 
 

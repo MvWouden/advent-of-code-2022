@@ -29,8 +29,6 @@ def run_command(command: tuple[str, int], rope: list[tuple[int, int]],
                     rope[i] = (rope[i][0], rope[i][1] + 1)
                 elif direction == 'D':
                     rope[i] = (rope[i][0], rope[i][1] - 1)
-                else:
-                    raise ValueError(f'Unknown direction: {direction}')
                 continue
 
             # Compute difference between knot and previous knot
@@ -69,4 +67,4 @@ def run_commands(_commands: list[tuple[str, int]], rope_length: int = 2) -> set[
 
 
 print(f'part1: {len(run_commands(commands))}')
-print(f'part1: {len(run_commands(commands, 10))}')
+print(f'part2: {len(run_commands(commands, 10))}')

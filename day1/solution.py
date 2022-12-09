@@ -2,10 +2,10 @@
 Advent of Code 2022: day 1
 """
 calories = [
-    sum([                                # Sum up cluster
-        int(calories)                    # Transform to int
-        for calories in elf.split('\n')  # Split single caloric items
-        if calories                      # Ignore empty string
+    sum([                                 # Sum up cluster
+        int(calories)                     # Transform to int
+        for calories in elf.splitlines()  # Split single caloric items
+        if calories                       # Ignore empty string
     ])
     for elf in open('input.txt').read().split('\n\n')  # Divide input into clusters
 ]

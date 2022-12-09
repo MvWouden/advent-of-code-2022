@@ -7,13 +7,19 @@ from collections import deque
 signal = open('input.txt').read()
 
 
-def get_start_marker_index(signal: str, marker_len: int = 4) -> int:
+def get_start_marker_index(_signal: str, marker_len: int = 4) -> int:
+    """
+    Get the index of the start of the signal.
+    :param _signal: The received signal.
+    :param marker_len: The length of the marker to detect.
+    :return: The index of the start of the signal.
+    """
     # Set up a history with max length
     history = deque(maxlen=marker_len-1)
     [history.append(None) for _ in range(marker_len-1)]
 
     # Go over signal to detect start marker
-    for i, char in enumerate(signal):
+    for i, char in enumerate(_signal):
         # Enough distinct characters, marker encountered
         if all(history) and len({char, *history}) == marker_len:
             return i + 1

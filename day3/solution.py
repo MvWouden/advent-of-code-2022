@@ -4,24 +4,21 @@ Advent of Code 2022: day 3
 from more_itertools import chunked
 
 
-split_input = open('input.txt', 'r').read().split('\n')
+split_input = open('input.txt', 'r').read().splitlines()
 
 
-def type_to_priority(type: str | None) -> int:
+def type_to_priority(_type: str) -> int:
     """
     Determines the priority of a type (single character)
-    :param type: Single uppercase or lowercase character.
+    :param _type: Single uppercase or lowercase character.
     :return: The priority of the type.
     """
-    if not type or len(type) != 1:
-        raise Exception('Type should be a single character.')
-
     # Lowercase type
-    if type.islower():
-        return ord(type) - ord('a') + 1
+    if _type.islower():
+        return ord(_type) - ord('a') + 1
 
     # Uppercase type
-    return ord(type) - ord('A') + 27
+    return ord(_type) - ord('A') + 27
 
 
 def split_rucksack(rucksack: str) -> tuple[str, str]:
