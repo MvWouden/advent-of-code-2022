@@ -59,7 +59,6 @@ scenic_scores = []
 for r, row in enumerate(rows):
     for c, h in enumerate(row):
         left = right = top = bottom = 0
-        print(f'{r},{c}: {h}')
 
         # Traverse to left
         for i in range(c - 1, -1, -1):
@@ -89,4 +88,3 @@ for r, row in enumerate(rows):
         scenic_scores.append(left * right * top * bottom)
 
 print(f'part2: {max(scenic_scores)}')
-
