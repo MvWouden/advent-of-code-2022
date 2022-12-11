@@ -3,6 +3,7 @@ Advent of Code 2022: day 11
 """
 import operator
 import os
+import sys
 
 from collections import deque
 from functools import reduce
@@ -15,7 +16,7 @@ class Monkey:
         """
         Initialize a monkey object.,
         :param op: The operator used to modify the worry level.
-        :param constant: The constant used in the worry level modification (or 'old' to use the old worry level).
+        :param constant: The constant used in the worry level modification (or 'old').
         :param divider: The constant used to divide the worry level.
         :param modulo: The modulo test condition.
         :param items: The starting items of the monkey.
@@ -28,7 +29,7 @@ class Monkey:
         self._monkey_if_false: Monkey | None = None
         self._items: deque[int] = deque(items if items else [])
         self._inspect_count: int = 0
-        self._modulo_optimizer: int | None = None
+        self._modulo_optimizer: int = sys.maxsize
 
     @property
     def inspect_count(self) -> int:
@@ -113,12 +114,9 @@ class Monkey:
 
         # Modify the worry level
         worry_level = self._items.popleft()
-        worry_level = self._operator(worry_level, self._constant if isinstance(self._constant, int) else worry_level)
-        worry_level //= self._divider
-
-        # Optimize the worry level
-        if self._modulo_optimizer:
-            worry_level %= self._modulo_optimizer
+        constant = self._constant if isinstance(self._constant, int) else worry_level
+        worry_level = self._operator(worry_level, constant) % self._modulo_optimizer
+        worry_level = worry_level // self._divider % self._modulo_optimizer
 
         # Worry level meets test condition
         if worry_level % self._modulo == 0:

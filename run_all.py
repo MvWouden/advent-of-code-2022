@@ -1,5 +1,9 @@
+"""
+Advent of Code 2022: run all days
+"""
 import os
 import time
+
 
 # Get all solution folders in the current directory
 days = [f for f in os.listdir('.') if os.path.isdir(f) and f.startswith('day')]
@@ -14,4 +18,3 @@ for day in days:
     end = time.time()
     print(f'| {day.replace("day", ""):>3} | {end - start:>12.3f} |')
 print('-'*22)
-
