@@ -2,6 +2,8 @@
 Advent of Code 2022: day 11
 """
 import operator
+import os
+
 from collections import deque
 from functools import reduce
 
@@ -180,7 +182,8 @@ def setup_game(part: int) -> list[Monkey]:
     divider: int = 3 if part == 1 else 1
 
     # Parse the monkeys and assign their relationships
-    _monkeys: list[str] = open('input.txt').read().split('\n\n')
+    input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+    _monkeys: list[str] = open(input_file).read().split('\n\n')
     _monkeys: list[tuple[Monkey, int, int]] = [parse_monkey(monkey, divider) for monkey in _monkeys]
     _monkeys: list[Monkey] = assign_monkey_relationships(_monkeys)
 

@@ -1,7 +1,10 @@
 """
 Advent of Code 2022: day 9
 """
-split_input = open('input.txt').read().splitlines()
+import os
+
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+split_input = open(input_file).read().splitlines()
 commands = [command.split(' ') for command in split_input]
 commands = [(x, int(y)) for x, y in commands]
 

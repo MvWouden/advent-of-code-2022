@@ -1,13 +1,17 @@
 """
 Advent of Code 2022: day 1
 """
+import os
+
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+
 calories = [
     sum([                                 # Sum up cluster
         int(calories)                     # Transform to int
         for calories in elf.splitlines()  # Split single caloric items
         if calories                       # Ignore empty string
     ])
-    for elf in open('input.txt').read().split('\n\n')  # Divide input into clusters
+    for elf in open(input_file).read().split('\n\n')  # Divide input into clusters
 ]
 calories.sort()
 

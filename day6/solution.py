@@ -1,10 +1,13 @@
 """
 Advent of Code 2022: day 6
 """
+import os
+
 from collections import deque
 
 
-signal = open('input.txt').read()
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+signal = open(input_file).read()
 
 
 def get_start_marker_index(_signal: str, marker_len: int = 4) -> int:

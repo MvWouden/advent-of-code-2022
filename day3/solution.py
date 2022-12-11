@@ -1,10 +1,13 @@
 """
 Advent of Code 2022: day 3
 """
+import os
+
 from more_itertools import chunked
 
 
-split_input = open('input.txt', 'r').read().splitlines()
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+split_input = open(input_file).read().splitlines()
 
 
 def type_to_priority(_type: str) -> int:

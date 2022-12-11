@@ -1,7 +1,10 @@
 """
 Advent of Code 2022: day 8
 """
-split_input = open('input.txt').read().splitlines()
+import os
+
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+split_input = open(input_file).read().splitlines()
 rows = tuple([tuple([int(h) for h in row]) for row in split_input])
 
 

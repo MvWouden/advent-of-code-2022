@@ -1,12 +1,15 @@
 """
 Advent of Code 2022: day 5
 """
+import os
 import re
+
 from collections import deque
 
 
 # Read in input
-starting_stacks, procedure = open('input.txt').read().split('\n\n')
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+starting_stacks, procedure = open(input_file).read().split('\n\n')
 steps = procedure.splitlines()
 
 

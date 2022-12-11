@@ -1,6 +1,8 @@
 """
 Advent of Code 2022: day 10
 """
+import os
+
 from collections import deque
 
 
@@ -61,7 +63,8 @@ def render_CRT(_signal: list[int]) -> None:
 
 
 # Common
-instructions: deque[str] = deque(open('input.txt').read().splitlines())
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+instructions: deque[str] = deque(open(input_file).read().splitlines())
 signal = determine_signal(instructions)
 
 # Part 1

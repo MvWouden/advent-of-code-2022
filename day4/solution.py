@@ -1,7 +1,10 @@
 """
 Advent of Code 2022: day 4
 """
-split_input = open("input.txt").read().splitlines()
+import os
+
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+split_input = open(input_file).read().splitlines()
 
 
 def get_min_max_ranges(line: str) -> tuple[int, int, int, int]:

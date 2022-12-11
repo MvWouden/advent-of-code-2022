@@ -1,7 +1,10 @@
 """
 Advent of Code 2022: day 2
 """
-split_input = open('input.txt', 'r').read().splitlines()
+import os
+
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+split_input = open(input_file).read().splitlines()
 
 states: dict = {  # Win, draw, loss based on pick
     'AX': 3,

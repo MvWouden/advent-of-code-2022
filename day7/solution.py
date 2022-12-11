@@ -1,6 +1,7 @@
 """
 Advent of Code 2022: day 7
 """
+import os
 import re
 import sys
 from collections import deque
@@ -161,7 +162,8 @@ def parse_commands(_commands: deque[str]) -> Directory:
 
 
 # Read in the system commands and parse to a directory structure
-commands: deque[str] = deque(open('input.txt').read().splitlines())
+input_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+commands: deque[str] = deque(open(input_file).read().splitlines())
 start_dir: Directory = parse_commands(commands)
 
 # Setup queue and other variables
