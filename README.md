@@ -12,3 +12,4 @@ This repository contains my solutions to the [Advent of Code 2022](https://adven
 - [Day 9: Rope Bridge](day9/solution.py)
 - [Day 10: Cathode-Ray Tube](day10/solution.py)
 - [Day 11: Monkey in the Middle](day11/solution.py)
+- [Day 12: Hill Climbing Algorithm](day12/solution.py)
