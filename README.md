@@ -14,3 +14,4 @@ This repository contains my solutions to the [Advent of Code 2022](https://adven
 - [Day 11: Monkey in the Middle](day11/solution.py)
 - [Day 12: Hill Climbing Algorithm](day12/solution.py)
 - [Day 13: Distress Signal](day13/solution.py)
+- [Day 14: Regolith Reservoir](day14/solution.py)
